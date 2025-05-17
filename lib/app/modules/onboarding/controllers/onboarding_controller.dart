@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:task_intern_md_edtech/app/modules/onboarding/views/loading_view.dart';
 
 class OnboardingController extends GetxController {
   //TODO: Implement OnboardingController
@@ -37,7 +38,7 @@ class OnboardingController extends GetxController {
         curve: Curves.easeInOut,
       );
     } else {
-      Get.offAllNamed("/home");
+      Get.off(() => LoadingView());
     }
   }
 

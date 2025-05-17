@@ -55,10 +55,61 @@ class HomeView extends GetView<HomeController> {
                                   ),
                                 ],
                               ),
+                              SizedBox(height: 10),
                               Container(
-                                padding: EdgeInsets.symmetric(vertical: 20),
-                                child: Column(children: [WgCardBanner()]),
+                                padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                                height: 180,
+                                child: PageView.builder(
+                                  controller: controller.bannerControllers,
+                                  onPageChanged: (index) {
+                                    controller.currentPages.value = index;
+                                  },
+                                  physics: const ClampingScrollPhysics(),
+                                  scrollDirection: Axis.horizontal,
+                                  itemCount: controller.bannerData.length,
+                                  itemBuilder: (context, index) {
+                                    final data = controller.bannerData[index];
+                                    return WgCardBanner(
+                                      images: data['images']!,
+                                    );
+                                  },
+                                ),
                               ),
+                              Obx(() {
+                                return Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: List.generate(
+                                    controller.bannerData.length,
+                                    (index) {
+                                      final isActive =
+                                          controller.currentPages.value ==
+                                          index;
+                                      return AnimatedContainer(
+                                        duration: const Duration(
+                                          milliseconds: 300,
+                                        ),
+                                        margin: const EdgeInsets.symmetric(
+                                          horizontal: 6,
+                                        ),
+                                        width: isActive ? 24 : 8,
+                                        height: 8,
+                                        decoration: BoxDecoration(
+                                          color:
+                                              isActive
+                                                  ? const Color(0xFFFFD700)
+                                                  // ignore: deprecated_member_use
+                                                  : const Color(
+                                                    0xFFFFD700,
+                                                  ).withOpacity(0.3),
+                                          borderRadius: BorderRadius.circular(
+                                            8,
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                );
+                              }),
                             ],
                           ),
                         ),
@@ -79,9 +130,13 @@ class HomeView extends GetView<HomeController> {
                                         const SizedBox(width: 20),
                                 physics: const ClampingScrollPhysics(),
                                 scrollDirection: Axis.horizontal,
-                                itemCount: 10,
+                                itemCount: controller.cityData.length,
                                 itemBuilder: (context, index) {
-                                  return WgRoundedCity();
+                                  final data = controller.cityData[index];
+                                  return WgRoundedCity(
+                                    images: data['images']!,
+                                    title: data['title']!,
+                                  );
                                 },
                               ),
                             ),
@@ -264,9 +319,14 @@ class HomeView extends GetView<HomeController> {
                                           const SizedBox(width: 5),
                                   physics: const ClampingScrollPhysics(),
                                   scrollDirection: Axis.horizontal,
-                                  itemCount: 10,
+                                  itemCount: controller.articlesData.length,
                                   itemBuilder: (context, index) {
-                                    return WgArticles();
+                                    final data = controller.articlesData[index];
+                                    return WgArticles(
+                                      title: data['title']!,
+                                      tanggal: data['tanggal']!,
+                                      waktu: data['waktu']!,
+                                    );
                                   },
                                 ),
                               ),

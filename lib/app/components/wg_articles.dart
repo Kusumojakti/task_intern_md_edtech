@@ -2,7 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class WgArticles extends StatelessWidget {
-  const WgArticles({super.key});
+  final String title;
+  final String tanggal;
+  final String waktu;
+  const WgArticles({
+    super.key,
+    required this.title,
+    required this.tanggal,
+    required this.waktu,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -34,18 +42,20 @@ class WgArticles extends StatelessWidget {
                   Container(
                     width: 160,
                     child: Text(
-                      "Tips Terbaik Sewa Ruang Kantor",
+                      title,
                       style: GoogleFonts.poppins(
                         fontWeight: FontWeight.w500,
                         fontSize: 12,
                         color: Color(0xFF404040),
                       ),
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
                       textAlign: TextAlign.start,
                     ),
                   ),
                   SizedBox(height: 13),
                   Text(
-                    "22 Des 2023 6:55 AM",
+                    "$tanggal $waktu",
                     style: GoogleFonts.plusJakartaSans(
                       fontWeight: FontWeight.w400,
                       fontSize: 10,

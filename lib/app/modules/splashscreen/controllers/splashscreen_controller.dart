@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:task_intern_md_edtech/app/routes/app_pages.dart';
 
 class SplashscreenController extends GetxController {
   final count = 0.obs;
@@ -8,23 +9,7 @@ class SplashscreenController extends GetxController {
     if (step.value < 2) {
       step.value++;
     } else {
-      Get.offAllNamed('/onboarding');
+      Get.offAllNamed(Routes.ONBOARDING);
     }
   }
-  // @override
-  // void onInit() {
-  //   super.onInit();
-  // }
-
-  // @override
-  // void onReady() {
-  //   super.onReady();
-  // }
-
-  // @override
-  // void onClose() {
-  //   super.onClose();
-  // }
-
-  // void increment() => count.value++;
 }

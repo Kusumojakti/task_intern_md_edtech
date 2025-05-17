@@ -3,7 +3,8 @@ import 'package:get/get_core/get_core.dart';
 import 'package:get/get_navigation/src/extension_navigation.dart';
 
 class WgCardBanner extends StatelessWidget {
-  const WgCardBanner({super.key});
+  final String images;
+  const WgCardBanner({super.key, required this.images});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +15,7 @@ class WgCardBanner extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(15),
             child: Image.asset(
-              "assets/images/banner_1.png",
+              images,
               width: Get.width,
               height: 150,
               fit: BoxFit.cover,
