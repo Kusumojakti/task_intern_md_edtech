@@ -24,7 +24,18 @@ class OnboardingView extends GetView<OnboardingController> {
                   padding: const EdgeInsets.all(0.0),
                   child: Column(
                     children: [
-                      Image.asset(data['images']!),
+                      ClipRRect(
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(50),
+                          bottomRight: Radius.circular(50),
+                        ),
+                        child: Image.asset(
+                          data['images']!,
+                          height: Get.height * 0.5,
+                          width: Get.width,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
                       const SizedBox(height: 24),
                       Text(
                         data['title']!,

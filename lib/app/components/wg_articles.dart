@@ -53,7 +53,7 @@ class WgArticles extends StatelessWidget {
                       textAlign: TextAlign.start,
                     ),
                   ),
-                  SizedBox(height: 13),
+                  SizedBox(height: 5),
                   Text(
                     "$tanggal $waktu",
                     style: GoogleFonts.plusJakartaSans(

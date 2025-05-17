@@ -12,7 +12,6 @@ class SplashscreenView extends GetView<SplashscreenController> {
         final step = controller.step.value;
 
         return GestureDetector(
-          onTap: controller.nextStep,
           child: AnimatedContainer(
             duration: const Duration(milliseconds: 500),
             curve: Curves.easeInOut,

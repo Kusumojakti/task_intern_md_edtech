@@ -17,12 +17,52 @@ class DetailLocationsView extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Image.asset(
-              "assets/images/apartment.jpg",
-              width: Get.width,
-              height: Get.height * 0.45,
-              fit: BoxFit.cover,
+            Stack(
+              children: [
+                Image.asset(
+                  "assets/images/apartment.jpg",
+                  width: Get.width,
+                  height: Get.height * 0.45,
+                  fit: BoxFit.cover,
+                ),
+                Positioned(
+                  top: 40,
+                  left: 16,
+                  child: GestureDetector(
+                    onTap: () => Get.back(),
+                    child: CircleAvatar(
+                      backgroundColor: Colors.white.withOpacity(0.4),
+                      child: Icon(
+                        Icons.arrow_back_ios_new,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ),
+                ),
+
+                Positioned(
+                  top: 40,
+                  right: 72,
+                  child: CircleAvatar(
+                    backgroundColor: Colors.white.withOpacity(0.4),
+                    child: Icon(
+                      Icons.bookmark_add_outlined,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+
+                Positioned(
+                  top: 40,
+                  right: 16,
+                  child: CircleAvatar(
+                    backgroundColor: Colors.white.withOpacity(0.4),
+                    child: Icon(Icons.send, color: Colors.white),
+                  ),
+                ),
+              ],
             ),
+
             Container(
               padding: EdgeInsets.all(24),
               child: Column(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:get/get.dart';
 import 'package:task_intern_md_edtech/app/components/wg_bottombar.dart';
@@ -39,12 +40,12 @@ class ParentTabView extends GetView<ParentTabController> {
     ];
 
     return PopScope(
-      canPop: false,
       // ignore: deprecated_member_use
+      canPop: false,
       onPopInvoked: (didPop) {
-        if (didPop) {
-          return;
-        }
+        if (didPop) return;
+
+        SystemNavigator.pop();
       },
       child: Obx(() {
         return Scaffold(
